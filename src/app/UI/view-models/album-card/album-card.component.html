@@ -6,7 +6,8 @@
       <!-- BEM: Elemento 'title' del bloque 'card' -->
       <h1 class="card__title">Titulo Album :</h1>
       <!-- BEM: Elemento 'loader' del bloque 'card' -->
-      <app-circular-progress-indicator *ngIf="!datos?.title" class="card__loader"/>
+      <app-circular-progress-indicator *ngIf="!datos?.title" class="card__loader">
+      </app-circular-progress-indicator>
       <!-- BEM: Elemento 'content' del bloque 'card' -->
       <h3 class="card__content">{{datos?.title}}</h3>
     </div>
@@ -17,7 +18,8 @@
         <!-- BEM: Elemento 'subtitle' del bloque 'card' -->
         <h2 class="card__subtitle">Album id :</h2>
         <!-- BEM: Elemento 'loader' del bloque 'card' -->
-        <app-circular-progress-indicator *ngIf="!datos?.id" class="card__loader"/>
+        <app-circular-progress-indicator *ngIf="!datos?.id" class="card__loader">
+        </app-circular-progress-indicator>
         <!-- BEM: Elemento 'content' del bloque 'card' -->
         <h3 class="card__content">{{datos?.id}}</h3>
       </div>
@@ -26,7 +28,8 @@
         <!-- BEM: Elemento 'subtitle' del bloque 'card' -->
         <h2 class="card__subtitle">Album userId :</h2>
         <!-- BEM: Elemento 'loader' del bloque 'card' -->
-        <app-circular-progress-indicator *ngIf="!datos?.userId" class="card__loader"/>
+        <app-circular-progress-indicator *ngIf="!datos?.userId" class="card__loader">
+        </app-circular-progress-indicator>
         <!-- BEM: Elemento 'content' del bloque 'card' -->
         <h3 class="card__content">{{datos?.userId}}</h3>
       </div>
