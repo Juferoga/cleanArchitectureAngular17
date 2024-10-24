@@ -5,8 +5,15 @@
   align-items: center;
 }
 
+// La metodología BEM (Block Element Modifier)
+// se utiliza aquí para crear clases CSS reutilizables y mantenibles.
+// El bloque es 'card',
+// los elementos son partes del bloque (por ejemplo, '__header', '__title'),
+// y los modificadores son variaciones del bloque (por ejemplo, '--type-1').
+
 .card {
   &--type-1 {
+    // Modificador para el bloque 'card', indicando una variación específica de la tarjeta.
     border: 1px solid #ccc;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -15,12 +22,14 @@
   }
 
   &__header {
+    // Elemento que representa la sección de encabezado del bloque 'card'.
     padding: 16px;
     background-color: #f5f5f5;
     border-bottom: 1px solid #ddd;
   }
 
   &__title {
+    // Elemento que representa el título dentro del encabezado del bloque 'card'.
     margin: 0;
     font-size: 24px;
     font-weight: bold;
@@ -28,11 +37,13 @@
   }
 
   &__loader {
+    // Elemento que representa un icono de carga dentro del bloque 'card'.
     display: inline-block;
     margin-left: 8px;
   }
 
   &__content {
+    // Elemento que representa el área de contenido principal del bloque 'card'.
     margin: 0;
     font-size: 18px;
     color: #666;
@@ -41,14 +52,17 @@
   }
 
   &__body {
+    // Elemento que representa la sección del cuerpo del bloque 'card'.
     padding: 16px;
   }
 
   &__section {
+    // Elemento que representa una sección dentro del bloque 'card'.
     margin-bottom: 16px;
   }
 
   &__subtitle {
+    // Elemento que representa un subtítulo dentro del bloque 'card'.
     margin: 0 0 8px 0;
     font-size: 20px;
     font-weight: bold;
