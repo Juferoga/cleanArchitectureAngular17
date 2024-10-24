@@ -1,0 +1,44 @@
+name: Page in AWS S3
+
+on:
+  push:
+    branches:
+    - master
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Configure AWS credentials
+      uses: aws-actions/configure-aws-credentials@v1
+      with:
+        aws-region: sa-east-1
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: 15.14.0
+
+    - name: Install dependencies
+      run: npm install
+
+    - name: Build
+      run: npm run build:prod
+
+    - name: Deploy
+      id: deploy_step
+      if: success()
+      run: aws s3 sync ./dist/angular-github-actions-amazon-s3 s3://angular-github-actions-amazon-s3
+
+    - name: Send notification
+      run: |
+        if [[ $(steps.deploy_step.outputs.deploy_status) == "success" ]]; then
+          python notification_correct.py
+        else
+          python notification_incorrect.py
+        fi

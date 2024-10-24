@@ -1,0 +1,47 @@
+name: Deploy Angular to GitHub Pages
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Paso 1: Chequea el repositorio
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Paso 2: Instala Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: "15.14.0" # Especifica la versión de Node.js compatible con Angular 17
+
+      # Paso 3: Instala dependencias
+      - name: Install dependencies
+        run: npm ci
+
+      # Paso 4: Compila la aplicación Angular
+      - name: Build Angular app
+        run: npm run build -- --output-path=dist --base-href /cleanArchitectureAngular17/
+
+      # Paso 5: Despliega en GitHub Pages
+      - name: Deploy to GitHub Pages
+        id: deploy_step
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: gh-pages # Desplegar en la rama 'gh-pages'
+          folder: dist # Ruta de la carpeta compilada
+
+      # Paso 6: Enviar notificación en caso de éxito
+      - name: Send success notification
+        if: success()
+        run: python notification_correct.py
+
+      # Paso 7: Enviar notificación en caso de fallo
+      - name: Send failure notification
+        if: failure()
+        run: python notification_incorrect.py

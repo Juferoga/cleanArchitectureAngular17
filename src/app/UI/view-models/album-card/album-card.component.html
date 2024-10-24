@@ -1,0 +1,21 @@
+<div class="body">
+  <div class="card card--type-1">
+    <div class="card__header">
+      <h1 class="card__title">Titulo Album :</h1>
+      <app-circular-progress-indicator *ngIf="!datos?.title" class="card__loader"></app-circular-progress-indicator>
+      <h3 class="card__content">{{datos?.title}}</h3>
+    </div>
+    <div class="card__body">
+      <div class="card__section">
+        <h2 class="card__subtitle">Album id :</h2>
+        <app-circular-progress-indicator *ngIf="!datos?.id" class="card__loader"></app-circular-progress-indicator>
+        <h3 class="card__content">{{datos?.id}}</h3>
+      </div>
+      <div class="card__section">
+        <h2 class="card__subtitle">Album userId :</h2>
+        <app-circular-progress-indicator *ngIf="!datos?.userId" class="card__loader"></app-circular-progress-indicator>
+        <h3 class="card__content">{{datos?.userId}}</h3>
+      </div>
+    </div>
+  </div>
+</div>
